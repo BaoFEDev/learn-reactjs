@@ -14,11 +14,9 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <ul>
-          {profileArr.map((i) => {
-            <>
-              <li key={i}>{i}</li>
-            </>;
-          })}
+          {profileArr.map((i) => (
+            <li>{i}</li>
+          ))}
         </ul>
       </header>
     </div>
