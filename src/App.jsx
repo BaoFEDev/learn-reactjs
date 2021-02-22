@@ -8,13 +8,18 @@ function App() {
     age: 24,
   };
   let { name, job, age } = profile;
+  let profileArr = ["Nguyễn Hoàn Bảo", "Dev", 24];
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{name}</p>
-        <p>{job}</p>
-        <p>{age}</p>
+        <ul>
+          {profileArr.map((i) => {
+            <>
+              <li key={i}>{i}</li>
+            </>;
+          })}
+        </ul>
       </header>
     </div>
   );
