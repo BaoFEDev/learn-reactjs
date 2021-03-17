@@ -1,0 +1,8 @@
+.button-group{
+    text-align: center;
+}
+.button-group button{
+    width: 150px;
+    height: 50px;
+    margin-right: 10px;
+}
