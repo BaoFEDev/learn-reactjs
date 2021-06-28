@@ -5,21 +5,26 @@ import { TextField } from "@material-ui/core";
 
 const InputField = (props) => {
   const { name, disabled, form, label } = props;
-  const { errors } = form;
+  const { formState: { errors }, register } = form;
   const hasError = errors[name];
   return (
     <>
       <Controller
-        name={name}
+        render={({ field }) =>
+          <TextField
+            {...register(name)}
+            {...field}
+            type="text"
+            margin="normal"
+            variant="outlined"
+            label={label}
+            fullWidth
+            error={!!hasError}
+            helperText={errors[name]?.message}
+          />}
         control={form.control}
-        as={TextField}
-        margin="normal"
-        variant="outlined"
-        label={label}
+        name={name}
         disabled={disabled}
-        error={!!hasError}
-        helperText={errors[name]?.message}
-        fullWidth
       />
     </>
   );

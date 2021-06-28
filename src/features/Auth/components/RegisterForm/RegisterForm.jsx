@@ -72,7 +72,7 @@ const RegisterForm = (props) => {
             </Avatar>
             <Typography className={classes.title} component="h3" variant="h5">
                 Create an account
-      </Typography>
+            </Typography>
             <form onSubmit={form.handleSubmit(handleSubmit)}>
                 <InputField name="fullName" label="Full name" form={form} />
                 <InputField name="email" label="Email" form={form} />

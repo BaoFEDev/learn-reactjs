@@ -9,14 +9,14 @@ import * as yup from "yup";
 
 const TodoForm = (props) => {
     let { onSubmit } = props;
-    const schema = yup.object().shape({
-        title: yup.string().required('Please enter title').min(5, "Title is too short")
-    });
+    // const schema = yup.object().shape({
+    //     title: yup.string().required('Please enter title').min(5, "Title is too short")
+    // });
     const form = useForm({
         defaultValues: {
             title: ""
         },
-        resolver: yupResolver(schema)
+        // resolver: yupResolver(schema)
     });
 
     const handleSubmit = (values) => {

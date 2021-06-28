@@ -32,6 +32,7 @@ axiosClient.interceptors.response.use(function (response) {
         const firstError = errorList.length > 0 ? errorList[0] : {};
         const messageList = firstError.messages || [];
         const firstMessages = messageList.length > 0 ? messageList[0] : {};
+        console.log(firstMessages);
         throw new Error(firstMessages.message);
     }
     return Promise.reject(error);

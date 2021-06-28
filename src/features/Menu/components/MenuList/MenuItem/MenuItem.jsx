@@ -14,6 +14,7 @@ const MenuItem = (props) => {
 
     onMenuClick(menu, idx);
   };
+
   return (
     <>
       <div className={menuItem} onClick={() => handleMenuList(menu, idx)}>

@@ -10,7 +10,6 @@ const Login = (props) => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
   const handleSubmit = async (values) => {
-    console.log("Form submit:", values);
 
     try {
       const action = login(values);
@@ -20,9 +19,8 @@ const Login = (props) => {
       if (closeDialog) {
         closeDialog();
       }
-      console.log("New user", user);
+      enqueueSnackbar('Login successfully', { variant: 'success' });
     } catch (error) {
-      console.log("Failed to login:", error);
       enqueueSnackbar(error.message, { variant: "error" });
     }
   };

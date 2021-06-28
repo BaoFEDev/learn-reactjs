@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 const Register = (props) => {
   const dispatch = useDispatch();
   const { enqueueSnackbar } = useSnackbar();
+
   const handleSubmit = async (values) => {
     console.log("Form submit:", values);
     const { closeDialog } = props;

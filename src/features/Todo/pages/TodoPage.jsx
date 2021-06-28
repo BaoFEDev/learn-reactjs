@@ -25,7 +25,7 @@ const TodoPage = () => {
     };
     todo.push(newTodo);
     const newTodoList = [...todo];
-    console.log(newTodo.id);
+    console.log(newTodoList);
     setTodoList(newTodoList);
   };
   return (

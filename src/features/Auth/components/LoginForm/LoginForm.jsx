@@ -55,13 +55,11 @@ const LoginForm = (props) => {
     },
     resolver: yupResolver(schema),
   });
-
   const handleSubmit = async (values) => {
     if (onSubmit) {
       await onSubmit(values);
     }
   };
-
   const { isSubmitting } = form.formState;
   return (
     <div className={classes.root}>

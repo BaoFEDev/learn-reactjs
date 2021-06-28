@@ -11,9 +11,8 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import { FormHelperText } from "@material-ui/core";
 const PasswordField = (props) => {
   const { name, disabled, form, label } = props;
-  const { errors } = form;
+  const { formState: { errors }, register } = form;
   const hasError = errors[name];
-
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleShowPassword = () => {
@@ -21,33 +20,35 @@ const PasswordField = (props) => {
   };
   return (
     <>
-      <FormControl
-        error={!!hasError}
-        fullWidth
-        margin="normal"
-        variant="outlined"
+      <FormControl fullWidth error={hasError} margin="normal" variant="outlined"
       >
         <InputLabel htmlFor={name}>{label}</InputLabel>
         <Controller
-          name={name}
           control={form.control}
-          as={OutlinedInput}
-          id={name}
-          type={showPassword ? "text" : "password"}
-          label={label}
-          endAdornment={
-            <InputAdornment position="end">
-              <IconButton
-                aria-label="toggle password visibility"
-                onClick={toggleShowPassword}
-                edge="end"
-              >
-                {showPassword ? <Visibility /> : <VisibilityOff />}
-              </IconButton>
-            </InputAdornment>
-          }
+          name={name}
           disabled={disabled}
+          render={({ field }) => (
+            <OutlinedInput
+              id={name}
+              type={showPassword ? "text" : "password"}
+              label={label}
+              {...register(name)}
+              {...field}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={toggleShowPassword}
+                    edge="end"
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          )}
         />
+
         <FormHelperText>{errors[name]?.message}</FormHelperText>
       </FormControl>
     </>
