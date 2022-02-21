@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import { CART_ITEMS } from "constants/common";
 const { createSlice } = require("@reduxjs/toolkit");
 
@@ -46,7 +45,7 @@ const cartSlice = createSlice({
       if (index >= 0) {
         state.cartItems[index].quantity--;
         if (state.cartItems[index].quantity <= 0) {
-          state.cartItems[index].quantity = 1;
+          state.cartItems = state.cartItems.filter((x) => x.id !== id);
         }
         localStorage.setItem(CART_ITEMS, JSON.stringify(state.cartItems));
       }
@@ -60,6 +59,20 @@ const cartSlice = createSlice({
       }
       localStorage.setItem(CART_ITEMS, JSON.stringify(state.cartItems));
     },
+
+    // changeQuantity(state, action) {
+    //   const { id, value } = action.payload;
+    //   //check if product is available in cart
+    //   const index = state.cartItems.findIndex((x) => x.id === id);
+    //   if (index >= 0) {
+    //     // state.cartItems[index].quantity = parseInt(value === "" ? 0 : value);
+    //     state.cartItems[index].quantity = parseInt(value === "" ? "" : value);
+    //     if (state.cartItems[index].quantity <= 0) {
+    //       state.cartItems = state.cartItems.filter((x) => x.id !== id);
+    //     }
+    //   }
+    //   localStorage.setItem(CART_ITEMS, JSON.stringify(state.cartItems));
+    // },
   },
 });
 
@@ -72,5 +85,6 @@ export const {
   removeFromCart,
   decreaseQuantity,
   increaseQuantity,
+  changeQuantity,
 } = actions;
 export default reducer;

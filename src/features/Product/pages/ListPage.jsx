@@ -55,6 +55,7 @@ const ListPage = (props) => {
     total: 10,
     page: 1
   });
+  console.log(queryParams);
   const [loading, setLoading] = useState(true);
   // const [filters, setFilters] = useState(() => ({
   //   ...queryParams,

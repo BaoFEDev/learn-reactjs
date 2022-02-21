@@ -6,7 +6,7 @@ import { THUMBNAIL_PLACEHOLDER } from 'constants/common'
 import { STATIC_HOST } from 'constants/index'
 import PropTypes from 'prop-types'
 import { useDispatch, useSelector } from 'react-redux'
-import { decreaseQuantity, increaseQuantity, removeFromCart } from './cartSlice'
+import { decreaseQuantity, increaseQuantity, removeFromCart, changeQuantity, setQuantity } from './cartSlice'
 import { cartItemsCountSelector, cartTotalSelector } from './selectors'
 
 
@@ -53,20 +53,31 @@ const CartItems = props => {
     let cartList = cart.cartItems;
     const dispatch = useDispatch();
     const decrease = (cartItemId) => {
-        let itemQuantity = cartList.filter(i => i.id === cartItemId)[0];
-        const action = decreaseQuantity(itemQuantity);
+        let objectItems = cartList.filter(i => i.id === cartItemId)[0];
+        const action = decreaseQuantity(objectItems);
         const resultAction = dispatch(action);
         unwrapResult(resultAction);
     }
     const increase = (cartItemId) => {
-        let itemQuantity = cartList.filter(i => i.id === cartItemId)[0];
-        const action = increaseQuantity(itemQuantity);
+        let objectItems = cartList.filter(i => i.id === cartItemId)[0];
+        const action = increaseQuantity(objectItems);
         const resultAction = dispatch(action);
         unwrapResult(resultAction);
     }
+    const changeValue = (e, cartItemId) => {
+        setValue(e.target.value)
+        let objectItems = cartList.filter(i => i.id === cartItemId)[0];
+        const action = setQuantity({
+            ...objectItems,
+            value
+        });
+        const resultAction = dispatch(action);
+        unwrapResult(resultAction);
+    }
+
     const remove = (cartItemId) => {
-        let itemQuantity = cartList.filter(i => i.id === cartItemId)[0];
-        const action = removeFromCart(itemQuantity);
+        let objectItems = cartList.filter(i => i.id === cartItemId)[0];
+        const action = removeFromCart(objectItems);
         const resultAction = dispatch(action);
         unwrapResult(resultAction);
     }
@@ -100,7 +111,7 @@ const CartItems = props => {
                     type="number"
                     variant="outlined"
                     value={value}
-                    onChange={(e) => setValue(e.target.value)}
+                    onChange={(e) => changeValue(e, id)}
                 />
                 <IconButton className={classes.iconButton} onClick={() => increase(id)}>
                     <AddCircleOutline />
