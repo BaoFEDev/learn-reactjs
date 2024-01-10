@@ -73,9 +73,8 @@ const ButtonAppBar = () => {
     dispatch(action);
   };
   const handleCartClick = () => {
-    history.push('/cart')
+    history.push("/cart");
   };
-
 
   const classes = useStyles();
   return (
@@ -103,9 +102,13 @@ const ButtonAppBar = () => {
             </Button>
           )}
 
-          <IconButton aria-label="show 4 new mails" color="inherit" onClick={handleCartClick}>
+          <IconButton
+            aria-label="show 4 new mails"
+            color="inherit"
+            onClick={handleCartClick}
+          >
             <Badge badgeContent={cartItemsCount} color="secondary">
-              <ShoppingCart />
+              Ordered items
             </Badge>
           </IconButton>
 

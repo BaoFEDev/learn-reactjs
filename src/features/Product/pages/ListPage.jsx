@@ -56,6 +56,7 @@ const ListPage = (props) => {
     page: 1
   });
   console.log(queryParams);
+  console.log(history.location.pathname)
   const [loading, setLoading] = useState(true);
   // const [filters, setFilters] = useState(() => ({
   //   ...queryParams,
