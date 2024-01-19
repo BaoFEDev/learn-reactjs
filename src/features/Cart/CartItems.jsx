@@ -116,7 +116,7 @@ const CartItems = props => {
                 <IconButton className={classes.iconButton} onClick={() => increase(id)}>
                     <AddCircleOutline />
                 </IconButton>
-                {/* <QuantityField name="quantity" label="Quantity" form={form} /> */}
+                <QuantityField name="quantity" label="Quantity" form={form} />
             </div>
         </>
     )
